@@ -54,8 +54,7 @@
             [self.layer removeAllAnimations];
             break;
         case OONodeViewStateChoose:
-            [self.layer addAnimation:[self opacityForever_Animation:0.5] forKey:nil];
-            break;
+            [self.layer addAnimation:[self opacityForever_Animation:0.5] forKey:nil];            break;
         default:
             break;
     }

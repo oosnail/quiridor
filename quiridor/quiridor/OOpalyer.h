@@ -15,9 +15,6 @@
 
 //当前所在位置
 @property (nonatomic,assign)CGPoint currentPoint;
-//当前所在node
-@property (nonatomic,assign)OONode* currentNode;
-
 //可以移动的位置
 @property (nonatomic,assign)NSArray * moviewPoint;
 

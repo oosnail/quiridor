@@ -67,7 +67,8 @@
             nodeView.bounds = CGRectMake(0, 0, _width, _width);
             nodeView.center = CGPointMake((x+1)*(_width+lineWidth)-_width/2,kScreenWidth- (y+1)*(_width+lineWidth)+_width/2);
             nodeView.backgroundColor = [UIColor whiteColor];
-            nodeView.point = CGPointMake(x, y);
+            nodeView.x = x;
+            nodeView.y = y;
             [self addSubview:nodeView];
             [self setPointDistance:nodeView];
             [_allNodeArray addObject:nodeView];
@@ -86,8 +87,8 @@
             //添加手势
             //添加手势
             {
-                    UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
-                    [nodeView addGestureRecognizer:ges];
+                //                UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
+                //                [nodeView addGestureRecognizer:ges];
             }
             //设置wallView
             
@@ -139,18 +140,6 @@
 - (OONode*)getNodeWithPoint:(CGPoint)point{
     OONode *node = self.allNodeArray[(int)(point.x*MaxY + point.y)];
     return node;
-}
-
-- (void)tap:(UIGestureRecognizer*)gesture{
-    OONode *node = (OONode*)gesture.view;
-    if(node.viewState != OONodeViewStateChoose){
-        return;
-    }
-    self.currentPlayer.center = node.center;
-    self.currentPlayer.currentPoint = node.point;
-    for(OONode * _node in self.allNodeArray){
-        _node.viewState = OONodeViewStateNone;
-    }
 }
 
 @end

@@ -22,11 +22,11 @@ typedef NS_ENUM(NSUInteger,OONodeViewState ){
 };
 
 @interface OONode : UIView
-//@property (nonatomic, assign) int x;
-//@property (nonatomic, assign) int y;
-@property (nonatomic, assign) CGPoint point;
+@property (nonatomic, assign) int x;
+@property (nonatomic, assign) int y;
 @property (nonatomic, weak) OONode *parent;
 @property (nonatomic, assign) int distance;
 @property (nonatomic, assign) OONodeViewType viewTpye;
 @property (nonatomic, assign) OONodeViewState viewState;
+
 @end

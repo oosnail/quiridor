@@ -136,11 +136,15 @@
     longPress1.minimumPressDuration = 0;
     [verticalWall addGestureRecognizer:longPress1];
     
-    for(OOpalyer *player in self.chessboard.playeyArray){
-        UITapGestureRecognizer* tapges=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
-        [player addGestureRecognizer:tapges];
-    }
+    
+    //添加玩家
+    [self addPlayer];
+}
 
+- (void)addPlayer{
+    OOpalyer *player = [[OOpalyer alloc]init];
+    player.bounds = CGRectMake(0, 0, _width, _width);
+//    player.center = 
 }
 
 -(void)longPress:(UILongPressGestureRecognizer *)longPress{
@@ -202,6 +206,7 @@
 }
 
 //移动结束
+
 - (void)endmoviesnapshot:(CGPoint)loc{
     //获取loc的位置
     //1是横 2是竖
@@ -229,6 +234,7 @@
 
 
 //开始 and 结束
+
 - (void)button1Click:(UIButton*)button{
     if(!button.selected){
         _pauseButton.selected = NO;
@@ -308,7 +314,7 @@
         return;
     }
     _chessboard.currentPlayer.nearestPoint = [self getNearestPointInNeighboar:player];
-    if(_nearestPoint.point.y == 9){
+    if(_nearestPoint.y == 9){
         _findendPoint = YES;
         [self endSearch];
         return;
@@ -373,52 +379,52 @@
         int _x;
         int _y;
         if(i == 0){//上
-            if(point.point.y == MaxY-1){
+            if(point.y == MaxY-1){
                 continue;
             }
             //判断是否有墙
-            NSArray *wall = @[@(point.point.x),@(point.point.y+0.5)];
+            NSArray *wall = @[@(point.x),@(point.y+0.5)];
             if([points containsObject:wall]){
                 continue;
             }
             
             
-            _x = point.point.x;
-            _y = point.point.y+1;
+            _x = point.x;
+            _y = point.y+1;
         }
         else if(i == 1){//下
-            if(point.point.y == 0){
+            if(point.y == 0){
                 continue;
             }
-            NSArray *wall = @[@(point.point.x),@(point.point.y-0.5)];
+            NSArray *wall = @[@(point.x),@(point.y-0.5)];
             if([points containsObject:wall]){
                 continue;
             }
             
-            _x = point.point.x;
-            _y = point.point.y-1;
+            _x = point.x;
+            _y = point.y-1;
         }
         else if(i == 2){//左
-            if(point.point.x == 0){
+            if(point.x == 0){
                 continue;
             }
-            NSArray *wall = @[@(point.point.x-0.5),@(point.point.y)];
+            NSArray *wall = @[@(point.x-0.5),@(point.y)];
             if([points containsObject:wall]){
                 continue;
             }
-            _x = point.point.x-1;
-            _y = point.point.y;
+            _x = point.x-1;
+            _y = point.y;
         }
         else if(i == 3){//右
-            NSArray *wall = @[@(point.point.x+0.5),@(point.point.y)];
+            NSArray *wall = @[@(point.x+0.5),@(point.y)];
             if([points containsObject:wall]){
                 continue;
             }
-            if(point.point.x == MaxX-1){
+            if(point.x == MaxX-1){
                 continue;
             }
-            _x = point.point.x+1;
-            _y = point.point.y;
+            _x = point.x+1;
+            _y = point.y;
         }
         //通过数组获取位置
         _neiboarpoint = _chessboard.allNodeArray[_x*MaxY + _y];
@@ -426,6 +432,9 @@
             continue;
         }
         _neiboarpoint.parent = point;
+//        if(_neiboarpoint.viewTpye != OONodeViewTypeEnd && _neiboarpoint.viewTpye != OONodeViewTypeStart){
+//            _neiboarpoint.viewTpye = OONodeViewTypeNeighbor;
+//        }
         [_neighboar addObject:_neiboarpoint];
     }
     return _neighboar;
@@ -453,11 +462,11 @@
             continue;
         }
         if(player.endType == 0){//终点是上
-            if(point.point.y > nearlistPoint.point.y){
+            if(point.y > nearlistPoint.y){
                 nearlistPoint = point;
             }
         }else{//终点是下
-            if(point.point.y < nearlistPoint.point.y){
+            if(point.y < nearlistPoint.y){
                 nearlistPoint = point;
             }
         }
@@ -472,24 +481,48 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+/*
 - (void)tap:(UIGestureRecognizer*)gesture{
-    OOpalyer *player = (OOpalyer*)gesture.view;
-    if([player isKindOfClass:[OOpalyer class]]){
-        [self getplayerWays:player];
+    OONode *node = (OONode*)gesture.view;
+    //如果之前有选择的情况
+    if(_chooseNodeView){
+        if(_chooseNodeView == node){
+            return;
+        }
+        _chooseNodeView.viewState  = OONodeViewStateNone;
+        if(node.viewTpye == OONodeViewTypeStart){
+            node.viewState = OONodeViewStateChoose;
+            _chooseNodeView = node;
+        }else if(node.viewTpye == OONodeViewTypeEnd){
+            node.viewState = OONodeViewStateChoose;
+            _chooseNodeView = node;
+        }else{
+            //设置起始点 或者 结束点
+            node.viewTpye = _chooseNodeView.viewTpye;
+            if(node.viewTpye == OONodeViewTypeStart){
+                _startNodeView = node;
+                _starPoint = @[@(node.x),@(node.y)];
+            }else if(node.viewTpye == OONodeViewTypeEnd){
+                _endPoint = @[@(node.x),@(node.y)];
+                _endNodeView = node;
+            }
+            //ggxc
+            [self updatePointDistance];
+            _chooseNodeView.viewTpye = OONodeViewTypeNone;
+            _chooseNodeView = nil;
+        }
+    }else{
+        //如果之前没有
+        if(node.viewTpye == OONodeViewTypeStart){
+            node.viewState = OONodeViewStateChoose;
+            _chooseNodeView = node;
+        }else if(node.viewTpye == OONodeViewTypeEnd){
+            node.viewState = OONodeViewStateChoose;
+            _chooseNodeView = node;
+        }
     }
 }
-
-- (void)getplayerWays:(OOpalyer*)player{
-    NSArray *arr = [self playerWays:player];
-    for(OONode*node in arr){
-        node.viewState = OONodeViewStateChoose;
-    }
-
-}
-
-
-
+*/
 //复制图片
 - (UIImageView *)customSnapshoFromView:(UIView *)inputView {
     // 用cell的图层生成UIImage，方便一会显示
@@ -619,6 +652,7 @@
         [arr addObject: @[@(newwall.x+0.5),@(newwall.y)]];
         [arr addObject: @[@(newwall.x+0.5),@(newwall.y+1)]];
     }
+    
     while (true) {
         OONode* _nearestPoint = player.nearestPoint;
         NSMutableArray*_neighboar = [self neighboarWithPoint:player.nearestPoint WallPoints:arr Play:player];
@@ -628,16 +662,19 @@
         //如果_neighborArray 为空 表示所有搜索都搜索到了。。
         if(player.neighborArray.count==0){
             _findendPoint = NO;
+//            [self endSearch];
             return YES;
         }
         player.nearestPoint = [self getNearestPointInNeighboar:player];
-        if(player.endType == 0 && _nearestPoint.point.y == MaxY-1){
+        if(player.endType == 0 && _nearestPoint.y == MaxY-1){
             _findendPoint = YES;
+//            [self endSearch];
             return NO;
-        }else if(player.endType == 1 && _nearestPoint.point.y == 0){
+        }else if(player.endType == 1 && _nearestPoint.y == 0){
             _findendPoint = YES;
             return NO;
         }
+//        break;
     }
     return YES;
 }
@@ -647,148 +684,9 @@
     return node;
 }
 
-/*//获取player可走的位置
- 1.上下左右是空的话直接可以走
- 2.有墙的话直接不可以走
- 3.是棋子的话,判断此棋子的1,2
-*/
+//获取player可走的位置
 - (NSArray*)playerWays:(OOpalyer*)player{
-    NSMutableArray *wayArray = [[NSMutableArray alloc]init];
-    for(int i=0;i<4;i++){
-        NSArray *arr = [self playerWays:player :i];
-        [wayArray addObjectsFromArray:arr];
-    }
-    return wayArray;
-}
-
-//获取某个方向可走的位置
-- (NSArray*)playerWays:(OOpalyer*)player :(OOWallDirectType)Type{
-    NSMutableArray *arr = [[NSMutableArray alloc]init];
-    CGPoint point = player.currentPoint;
-    OONode*currentNode = [_chessboard getNodeWithPoint:point];
-    {
-        CGPoint temppoint;
-        switch (Type) {
-            case OOWallDirectTypeUp:
-                temppoint  = CGPointMake(point.x, point.y+1);
-                break;
-            case OOWallDirectTypeDown:
-                temppoint  = CGPointMake(point.x, point.y-1);
-                break;
-            case OOWallDirectTypeLeft:
-                temppoint  = CGPointMake(point.x-1, point.y);
-                break;
-            case OOWallDirectTypeRight:
-                temppoint  = CGPointMake(point.x+1, point.y);
-                break;
-            default:
-                break;
-        }
-        if(temppoint.x< 0 || temppoint.x>MaxX-1 || temppoint.y< 0 || temppoint.y>MaxX-1){
-            return arr;
-        }
-        
-        BOOL havewall =  [self havewall:currentNode Walltype:Type];
-        BOOL haveplyer = [self havePlayer:[_chessboard getNodeWithPoint:temppoint]];
-        if(!havewall && !haveplyer){
-            OONode*tempnode = [_chessboard getNodeWithPoint:temppoint];
-            [arr addObject:tempnode];
-        }else{
-            if(haveplyer){
-                OONode*tempnode = [_chessboard getNodeWithPoint:temppoint];
-                BOOL havewall =  [self havewall:tempnode Walltype:Type];
-                if(havewall){
-                    //判断左右有没有墙
-                    BOOL haveleftwall =  [self havewall:tempnode Walltype:OOWallDirectTypeLeft];
-                    BOOL haverightwall =  [self havewall:tempnode Walltype:OOWallDirectTypeRight];
-                    BOOL haveupwall =  [self havewall:tempnode Walltype:OOWallDirectTypeUp];
-                    BOOL havedownwall =  [self havewall:tempnode Walltype:OOWallDirectTypeDown];
-                    CGPoint temppoint2;
-                    if(Type == OOWallDirectTypeDown ||  Type == OOWallDirectTypeUp){
-                        if(!haveleftwall ){
-                            temppoint = CGPointMake(temppoint2.x-1, temppoint2.y);
-                            OONode*tempnode = [_chessboard getNodeWithPoint:temppoint];
-                            [arr addObject:tempnode];
-                        }
-                        if(!haverightwall){
-                            temppoint = CGPointMake(temppoint2.x+1, temppoint2.y);
-                            OONode*tempnode = [_chessboard getNodeWithPoint:temppoint];
-                            [arr addObject:tempnode];
-                        }
-                    }else{
-                        if(!haveupwall ){
-                            temppoint = CGPointMake(temppoint2.x, temppoint2.y+1);
-                            OONode*tempnode = [_chessboard getNodeWithPoint:temppoint];
-                            [arr addObject:tempnode];
-                        }
-                        if(!havedownwall){
-                            temppoint = CGPointMake(temppoint2.x, temppoint2.y-1);
-                            OONode*tempnode = [_chessboard getNodeWithPoint:temppoint];
-                            [arr addObject:tempnode];
-                        }
-                    }
-
-
-                }else{
-                    OONode*tempnode = [_chessboard getNodeWithPoint:temppoint];
-                    [arr addObject:tempnode];
-                }
-            }
-        }
-    }
-    return arr;
-
-}
-
-//判断某个node上下左右是否有墙
-- (BOOL)havewall:(OONode*)node Walltype:(OOWallDirectType)Type{
-    if(Type == OOWallDirectTypeUp){//上
-        if(node.point.y == MaxY-1){
-            return YES;
-        }
-        //判断是否有墙
-        NSArray *wall = @[@(node.point.x),@(node.point.y+0.5)];
-        if([_chessboard.wallPointArray containsObject:wall]){
-            return YES;
-        }
-    }
-    else if(Type == OOWallDirectTypeDown){//下
-        if(node.point.y == 0){
-            return YES;
-        }
-        NSArray *wall = @[@(node.point.x),@(node.point.y-0.5)];
-        if([_chessboard.wallPointArray containsObject:wall]){
-            return YES;
-        }
-    }
-    else if(Type == OOWallDirectTypeLeft){//左
-        if(node.point.x == 0){
-            return YES;
-        }
-        NSArray *wall = @[@(node.point.x-0.5),@(node.point.y)];
-        if([_chessboard.wallPointArray containsObject:wall]){
-            return YES;
-        }
-    }
-    else if(Type == OOWallDirectTypeRight){//右
-        NSArray *wall = @[@(node.point.x+0.5),@(node.point.y)];
-        if([_chessboard.wallPointArray containsObject:wall]){
-            return YES;
-        }
-        if(node.point.x == MaxX-1){
-            return YES;
-        }
-    }
-    return NO;
-}
-//某个位置是否有player
-- (BOOL)havePlayer:(OONode*)node{
-    for(OOpalyer*player in self.chessboard.playeyArray){
-        if(CGPointEqualToPoint(player.currentPoint, node.point)){
-            return YES;
-        }
-    }
-    return NO;
+    return @[];
 }
 
 @end

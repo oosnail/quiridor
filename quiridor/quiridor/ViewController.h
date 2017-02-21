@@ -8,16 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
-
-//墙离Node的位置
-typedef NS_ENUM(NSUInteger,OOWallDirectType ) {
-    OOWallDirectTypeUp=0,
-    OOWallDirectTypeDown,
-    OOWallDirectTypeLeft,
-    OOWallDirectTypeRight,
-};
-
 @interface ViewController : UIViewController
 
 
