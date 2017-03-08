@@ -13,8 +13,12 @@
 //结束点 endType = 0 上 1 下 2 右 3 左
 @property (nonatomic,assign)int endType;
 
+
+@property (nonatomic,assign)BOOL isChoose;
+
 //当前所在位置
 @property (nonatomic,assign)CGPoint currentPoint;
+
 //可以移动的位置
 @property (nonatomic,assign)NSArray * moviewPoint;
 
@@ -32,6 +36,9 @@
 + (id)player:(int)i;
 
 - (void)resetSearchWay;
+
+//移动位置 direction = 0 上 1 下 2 右 3 左
+- (void)moveWithDirection:(int)direction;
 
 
 

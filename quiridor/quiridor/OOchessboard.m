@@ -87,8 +87,8 @@
             //添加手势
             //添加手势
             {
-                //                UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tap:)];
-                //                [nodeView addGestureRecognizer:ges];
+                                UITapGestureRecognizer *ges = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+                                [nodeView addGestureRecognizer:ges];
             }
             //设置wallView
             
@@ -106,7 +106,6 @@
     player1.currentPoint = CGPointMake(4, 0);
     player1.endType = 0;
     player1.nearestPoint = node;
-
     [self addSubview:player1];
     
     OOpalyer *player2 = [OOpalyer player:0];
@@ -120,6 +119,19 @@
     
     _currentPlayer = player1;
     _playeyArray = @[player1,player2];
+    
+    
+
+    
+}
+
+-(void)tapAction:(UITapGestureRecognizer *)tap{
+    OONode *node =(OONode*) [tap view];
+    for(OOpalyer*player in _playeyArray){
+        if(player.nearestPoint == node){
+            player.isChoose = YES;
+        }
+    }
 }
 
 - (void)resetDodeStatus{

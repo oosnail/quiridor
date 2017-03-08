@@ -30,9 +30,6 @@
 
 //是否已经找到终点
 @property (nonatomic, assign) BOOL findendPoint;
-
-
-
 //定时器
 @property (nonatomic,strong)NSTimer *time;
 //开始按钮
@@ -143,7 +140,6 @@
 - (void)addPlayer{
     OOpalyer *player = [[OOpalyer alloc]init];
     player.bounds = CGRectMake(0, 0, _width, _width);
-//    player.center = 
 }
 
 -(void)longPress:(UILongPressGestureRecognizer *)longPress{
@@ -607,6 +603,7 @@
     }
     return YES;
 }
+
 //没有强墙遮挡了
 - (BOOL)noWallOcclusion:(OOWall*)wall{
     for(OOWall *_wall in _chessboard.wallArray){
@@ -633,6 +630,7 @@
 - (BOOL)deathWarrantToAnyPlayer:(OOWall*)wall{
     for(OOpalyer* player in self.chessboard.playeyArray){
         if([self deathWarrantToPlayer:player NewWall:wall]){
+            NSLog(@"player is deathWay");
             return NO;
         }
     }
