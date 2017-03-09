@@ -18,7 +18,7 @@ typedef NS_ENUM(NSUInteger,OONodeViewType ) {
 
 typedef NS_ENUM(NSUInteger,OONodeViewState ){
     OONodeViewStateNone,//啥都是不
-    OONodeViewStateChoose,//啥都是不
+    OONodeViewStateChoose,//选中
 };
 
 @interface OONode : UIView
@@ -28,5 +28,8 @@ typedef NS_ENUM(NSUInteger,OONodeViewState ){
 @property (nonatomic, assign) int distance;
 @property (nonatomic, assign) OONodeViewType viewTpye;
 @property (nonatomic, assign) OONodeViewState viewState;
+
+//获取某个node 附近可以走的node
+- (NSMutableArray*)getValidnNeighborArray;
 
 @end

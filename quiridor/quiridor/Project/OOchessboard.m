@@ -7,15 +7,10 @@
 //
 
 #import "OOchessboard.h"
+
+
 @implementation OOchessboard
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 + (instancetype)shareView{
     static OOchessboard *view = nil;
     static dispatch_once_t onceToken;
@@ -29,7 +24,7 @@
 
 - (void)setDefaultValue{
    // _starPoint = @[@0,@0];
-   // _endPoint = @[@(MaxX-1),@(MaxY-1)];
+   // _endPoint = @[@(MaxNum-1),@(MaxNum-1)];
     
     //_searchedArray = [NSMutableArray array];
    
@@ -56,13 +51,11 @@
     self.center = CGPointMake(kScreenWidth/2.0, kScreenHeight/2.0);
     [self addNode];
     [self addPlayer];
-
-    
 }
 //添加棋盘
 - (void)addNode{
-    for(int x =0;x<MaxX;x++){
-        for(int y =0;y<MaxY;y++){
+    for(int x =0;x<MaxNum;x++){
+        for(int y =0;y<MaxNum;y++){
             OONode * nodeView = [[OONode alloc]init];
             nodeView.bounds = CGRectMake(0, 0, _width, _width);
             nodeView.center = CGPointMake((x+1)*(_width+lineWidth)-_width/2,kScreenWidth- (y+1)*(_width+lineWidth)+_width/2);
@@ -105,14 +98,15 @@
     player1.center = node.center;
     player1.currentPoint = CGPointMake(4, 0);
     player1.endType = 0;
-    player1.nearestPoint = node;
+    player1.currentNode = node;
+
     [self addSubview:player1];
     
     OOpalyer *player2 = [OOpalyer player:0];
     player2.bounds = CGRectMake(0, 0, _width, _width);
     OONode*node2 = [self getNodeWithPoint:CGPointMake(4, 9)];
     player2.currentPoint = CGPointMake(4, 9);
-    player2.nearestPoint = node2;
+    player2.currentNode = node2;
     player2.endType = 1;
     player2.center = node2.center;
     [self addSubview:player2];
@@ -128,7 +122,7 @@
 -(void)tapAction:(UITapGestureRecognizer *)tap{
     OONode *node =(OONode*) [tap view];
     for(OOpalyer*player in _playeyArray){
-        if(player.nearestPoint == node){
+        if(player.currentNode == node){
             player.isChoose = YES;
         }
     }
@@ -150,7 +144,7 @@
 }
 
 - (OONode*)getNodeWithPoint:(CGPoint)point{
-    OONode *node = self.allNodeArray[(int)(point.x*MaxY + point.y)];
+    OONode *node = self.allNodeArray[(int)(point.x*MaxNum + point.y)];
     return node;
 }
 

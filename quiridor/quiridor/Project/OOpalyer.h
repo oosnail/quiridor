@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "OONode.h"
+#import "OOWall.h"
 @interface OOpalyer : UIView
 
 //结束点 endType = 0 上 1 下 2 右 3 左
@@ -19,14 +20,11 @@
 //当前所在位置
 @property (nonatomic,assign)CGPoint currentPoint;
 
+@property (nonatomic,weak)OONode* currentNode;
+
+
 //可以移动的位置
 @property (nonatomic,assign)NSArray * moviewPoint;
-
-@property (nonatomic,strong) NSMutableArray<OONode *>* searchedArray;
-//searchArray 附近的地址
-@property (nonatomic,strong) NSMutableArray<OONode*>* neighborArray;
-//最近的点
-@property (nonatomic,strong) OONode* nearestPoint;
 
 - (id)init;
 
@@ -40,6 +38,9 @@
 //移动位置 direction = 0 上 1 下 2 右 3 左
 - (void)moveWithDirection:(int)direction;
 
-
-
+//当多了一个wall的时候 该player 是否还能走到终点
+- (BOOL)hasEndpathWithaddWall:(OOWall*)addWall;
 @end
+
+
+

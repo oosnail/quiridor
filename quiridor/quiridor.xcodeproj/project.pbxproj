@@ -7,27 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1C847F0C1DF54AB700CEA7B8 /* UIViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C847F0B1DF54AB700CEA7B8 /* UIViewAdditions.m */; };
-		1C847F0F1DF57DE300CEA7B8 /* OOpalyer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C847F0E1DF57DE300CEA7B8 /* OOpalyer.m */; };
-		1C847F121DF6B69D00CEA7B8 /* OOchessboard.m in Sources */ = {isa = PBXBuildFile; fileRef = 1C847F111DF6B69D00CEA7B8 /* OOchessboard.m */; };
 		1CB8B34E1DDD464C00120C22 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB8B34D1DDD464C00120C22 /* main.m */; };
 		1CB8B3511DDD464C00120C22 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB8B3501DDD464C00120C22 /* AppDelegate.m */; };
 		1CB8B3541DDD464D00120C22 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CB8B3531DDD464D00120C22 /* ViewController.m */; };
 		1CB8B3571DDD464D00120C22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB8B3551DDD464D00120C22 /* Main.storyboard */; };
 		1CB8B3591DDD464D00120C22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1CB8B3581DDD464D00120C22 /* Assets.xcassets */; };
 		1CB8B35C1DDD464D00120C22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1CB8B35A1DDD464D00120C22 /* LaunchScreen.storyboard */; };
-		1CE9BF331DF16BD30080F29A /* NSTimer+OOAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE9BF321DF16BD30080F29A /* NSTimer+OOAddition.m */; };
-		1CE9BF381DF16BDD0080F29A /* OONode.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE9BF351DF16BDD0080F29A /* OONode.m */; };
-		1CE9BF391DF16BDD0080F29A /* OOWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CE9BF371DF16BDD0080F29A /* OOWall.m */; };
+		B842C38D1E71560F00BD3512 /* NSTimer+OOAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C38C1E71560F00BD3512 /* NSTimer+OOAddition.m */; };
+		B842C3971E71561700BD3512 /* OOchessboard.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C3901E71561700BD3512 /* OOchessboard.m */; };
+		B842C3981E71561700BD3512 /* OONode.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C3921E71561700BD3512 /* OONode.m */; };
+		B842C3991E71561700BD3512 /* OOpalyer.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C3941E71561700BD3512 /* OOpalyer.m */; };
+		B842C39A1E71561700BD3512 /* OOWall.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C3961E71561700BD3512 /* OOWall.m */; };
+		B842C39D1E71562400BD3512 /* UIView+OOqua.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C39C1E71562400BD3512 /* UIView+OOqua.m */; };
+		B842C3A01E71935800BD3512 /* OOChessManage.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C39F1E71935800BD3512 /* OOChessManage.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1C847F0A1DF54AB700CEA7B8 /* UIViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIViewAdditions.h; sourceTree = "<group>"; };
-		1C847F0B1DF54AB700CEA7B8 /* UIViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIViewAdditions.m; sourceTree = "<group>"; };
-		1C847F0D1DF57DE300CEA7B8 /* OOpalyer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOpalyer.h; sourceTree = "<group>"; };
-		1C847F0E1DF57DE300CEA7B8 /* OOpalyer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOpalyer.m; sourceTree = "<group>"; };
-		1C847F101DF6B69D00CEA7B8 /* OOchessboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOchessboard.h; sourceTree = "<group>"; };
-		1C847F111DF6B69D00CEA7B8 /* OOchessboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOchessboard.m; sourceTree = "<group>"; };
 		1CB8B3491DDD464C00120C22 /* quiridor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = quiridor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1CB8B34D1DDD464C00120C22 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1CB8B34F1DDD464C00120C22 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -38,12 +33,20 @@
 		1CB8B3581DDD464D00120C22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1CB8B35B1DDD464D00120C22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1CB8B35D1DDD464D00120C22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1CE9BF311DF16BD30080F29A /* NSTimer+OOAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+OOAddition.h"; sourceTree = "<group>"; };
-		1CE9BF321DF16BD30080F29A /* NSTimer+OOAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+OOAddition.m"; sourceTree = "<group>"; };
-		1CE9BF341DF16BDD0080F29A /* OONode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OONode.h; sourceTree = "<group>"; };
-		1CE9BF351DF16BDD0080F29A /* OONode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OONode.m; sourceTree = "<group>"; };
-		1CE9BF361DF16BDD0080F29A /* OOWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOWall.h; sourceTree = "<group>"; };
-		1CE9BF371DF16BDD0080F29A /* OOWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOWall.m; sourceTree = "<group>"; };
+		B842C38B1E71560F00BD3512 /* NSTimer+OOAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTimer+OOAddition.h"; sourceTree = "<group>"; };
+		B842C38C1E71560F00BD3512 /* NSTimer+OOAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+OOAddition.m"; sourceTree = "<group>"; };
+		B842C38F1E71561700BD3512 /* OOchessboard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOchessboard.h; sourceTree = "<group>"; };
+		B842C3901E71561700BD3512 /* OOchessboard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOchessboard.m; sourceTree = "<group>"; };
+		B842C3911E71561700BD3512 /* OONode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OONode.h; sourceTree = "<group>"; };
+		B842C3921E71561700BD3512 /* OONode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OONode.m; sourceTree = "<group>"; };
+		B842C3931E71561700BD3512 /* OOpalyer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOpalyer.h; sourceTree = "<group>"; };
+		B842C3941E71561700BD3512 /* OOpalyer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOpalyer.m; sourceTree = "<group>"; };
+		B842C3951E71561700BD3512 /* OOWall.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOWall.h; sourceTree = "<group>"; };
+		B842C3961E71561700BD3512 /* OOWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOWall.m; sourceTree = "<group>"; };
+		B842C39B1E71562400BD3512 /* UIView+OOqua.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+OOqua.h"; sourceTree = "<group>"; };
+		B842C39C1E71562400BD3512 /* UIView+OOqua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+OOqua.m"; sourceTree = "<group>"; };
+		B842C39E1E71935800BD3512 /* OOChessManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOChessManage.h; sourceTree = "<group>"; };
+		B842C39F1E71935800BD3512 /* OOChessManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOChessManage.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,18 +79,8 @@
 		1CB8B34B1DDD464C00120C22 /* quiridor */ = {
 			isa = PBXGroup;
 			children = (
-				1C847F0A1DF54AB700CEA7B8 /* UIViewAdditions.h */,
-				1C847F0B1DF54AB700CEA7B8 /* UIViewAdditions.m */,
-				1C847F101DF6B69D00CEA7B8 /* OOchessboard.h */,
-				1C847F111DF6B69D00CEA7B8 /* OOchessboard.m */,
-				1C847F0D1DF57DE300CEA7B8 /* OOpalyer.h */,
-				1C847F0E1DF57DE300CEA7B8 /* OOpalyer.m */,
-				1CE9BF341DF16BDD0080F29A /* OONode.h */,
-				1CE9BF351DF16BDD0080F29A /* OONode.m */,
-				1CE9BF361DF16BDD0080F29A /* OOWall.h */,
-				1CE9BF371DF16BDD0080F29A /* OOWall.m */,
-				1CE9BF311DF16BD30080F29A /* NSTimer+OOAddition.h */,
-				1CE9BF321DF16BD30080F29A /* NSTimer+OOAddition.m */,
+				B842C38E1E71561700BD3512 /* Project */,
+				B842C38A1E71560F00BD3512 /* Library */,
 				1CB8B34F1DDD464C00120C22 /* AppDelegate.h */,
 				1CB8B3501DDD464C00120C22 /* AppDelegate.m */,
 				1CB8B3521DDD464D00120C22 /* ViewController.h */,
@@ -107,6 +100,34 @@
 				1CB8B34D1DDD464C00120C22 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B842C38A1E71560F00BD3512 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				B842C39B1E71562400BD3512 /* UIView+OOqua.h */,
+				B842C39C1E71562400BD3512 /* UIView+OOqua.m */,
+				B842C38B1E71560F00BD3512 /* NSTimer+OOAddition.h */,
+				B842C38C1E71560F00BD3512 /* NSTimer+OOAddition.m */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		B842C38E1E71561700BD3512 /* Project */ = {
+			isa = PBXGroup;
+			children = (
+				B842C38F1E71561700BD3512 /* OOchessboard.h */,
+				B842C3901E71561700BD3512 /* OOchessboard.m */,
+				B842C3911E71561700BD3512 /* OONode.h */,
+				B842C3921E71561700BD3512 /* OONode.m */,
+				B842C3931E71561700BD3512 /* OOpalyer.h */,
+				B842C3941E71561700BD3512 /* OOpalyer.m */,
+				B842C3951E71561700BD3512 /* OOWall.h */,
+				B842C3961E71561700BD3512 /* OOWall.m */,
+				B842C39E1E71935800BD3512 /* OOChessManage.h */,
+				B842C39F1E71935800BD3512 /* OOChessManage.m */,
+			);
+			path = Project;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,15 +202,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1C847F121DF6B69D00CEA7B8 /* OOchessboard.m in Sources */,
-				1C847F0F1DF57DE300CEA7B8 /* OOpalyer.m in Sources */,
+				B842C3991E71561700BD3512 /* OOpalyer.m in Sources */,
 				1CB8B3541DDD464D00120C22 /* ViewController.m in Sources */,
+				B842C38D1E71560F00BD3512 /* NSTimer+OOAddition.m in Sources */,
 				1CB8B3511DDD464C00120C22 /* AppDelegate.m in Sources */,
-				1C847F0C1DF54AB700CEA7B8 /* UIViewAdditions.m in Sources */,
-				1CE9BF331DF16BD30080F29A /* NSTimer+OOAddition.m in Sources */,
+				B842C3971E71561700BD3512 /* OOchessboard.m in Sources */,
+				B842C39A1E71561700BD3512 /* OOWall.m in Sources */,
+				B842C3981E71561700BD3512 /* OONode.m in Sources */,
+				B842C39D1E71562400BD3512 /* UIView+OOqua.m in Sources */,
 				1CB8B34E1DDD464C00120C22 /* main.m in Sources */,
-				1CE9BF381DF16BDD0080F29A /* OONode.m in Sources */,
-				1CE9BF391DF16BDD0080F29A /* OOWall.m in Sources */,
+				B842C3A01E71935800BD3512 /* OOChessManage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

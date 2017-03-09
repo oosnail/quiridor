@@ -9,17 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "OONode.h"
 #import "OOpalyer.h"
+#import "OOWall.h"
 
-#define MaxX  10
-#define MaxY  10
+#define MaxNum   10
+#define MaxX  MaxNum
+#define MaxY  MaxNum
+//节点与节点之间的距离
 #define lineWidth  5.f
+//每个节点的宽度
 #define _width  ((kScreenWidth - lineWidth)/MaxX -lineWidth)
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 @interface OOchessboard : UIView
-//墙的地址
-@property (nonatomic,strong) NSMutableArray* wallArray;
+//获取棋盘上所有的墙
+@property (nonatomic,strong) NSMutableArray<OOWall*>* wallArray;
 //墙的point地址
 @property (nonatomic,strong) NSMutableArray* wallPointArray;
 
