@@ -24,7 +24,7 @@
 
 
 //可以移动的位置
-@property (nonatomic,assign)NSArray * moviewPoint;
+@property (nonatomic,assign)NSArray * movieNodes;
 
 - (id)init;
 
@@ -38,8 +38,9 @@
 //移动位置 direction = 0 上 1 下 2 右 3 左
 - (void)moveWithDirection:(int)direction;
 
-//当多了一个wall的时候 该player 是否还能走到终点
-- (BOOL)hasEndpathWithaddWall:(OOWall*)addWall;
+- (void)moveToNode:(OONode*)node;
+
+
 @end
 
 

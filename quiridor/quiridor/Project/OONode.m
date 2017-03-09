@@ -9,6 +9,7 @@
 #import "OONode.h"
 #import "OOchessboard.h"
 #import "UIView+OOqua.h"
+#import "OOChessManage.h"
 @implementation OONode
 
 - (id)init{

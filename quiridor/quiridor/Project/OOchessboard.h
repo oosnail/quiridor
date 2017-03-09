@@ -36,7 +36,6 @@
 //选择的点
 @property (nonatomic,strong)OONode *chooseNodeView;
 //当前回合的player
-@property (nonatomic,strong)OOpalyer *currentPlayer;
 
 @property (nonatomic,strong) NSArray* playeyArray;
 - (void)resetDodeStatus;

@@ -9,6 +9,7 @@
 #import "OOpalyer.h"
 #import "OOchessboard.h"
 #import "UIView+OOqua.h"
+#import "OOChessManage.h"
 @implementation OOpalyer
 - (id)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
@@ -51,20 +52,26 @@
     _isChoose = isChoose;
     if(_isChoose){
         [self opacityAnimation:0.5];
+        NSArray* nodes = [[OOChessManage shareManage] getValidnNeighborArray:self.currentNode];
+        for(OONode*node in nodes){
+            node.viewTpye = OONodeViewTypeNeighbor;
+            [[OOChessManage shareManage].nextStepNodes addObject:node];
+
+        }
     }else{
         [self.layer removeAllAnimations];
     }
 }
 
+- (void)moveToNode:(OONode*)node{
+    self.currentNode = node;
+    self.center = node.center;
+    [[OOChessManage shareManage] changeCurrentPlyer];
+
+
+}
+
 - (void)moveWithDirection:(int)direction{
     
 }
-
-- (BOOL)hasEndpathWithaddWall:(OOWall*)addWall{
-    
-    
-    return NO;
-}
-
-
 @end

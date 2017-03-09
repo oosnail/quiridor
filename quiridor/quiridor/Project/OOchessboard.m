@@ -7,7 +7,7 @@
 //
 
 #import "OOchessboard.h"
-
+#import "OOChessManage.h"
 
 @implementation OOchessboard
 
@@ -111,7 +111,7 @@
     player2.center = node2.center;
     [self addSubview:player2];
     
-    _currentPlayer = player1;
+    [OOChessManage shareManage].currentPlayer = player1;
     _playeyArray = @[player1,player2];
     
     
@@ -121,10 +121,19 @@
 
 -(void)tapAction:(UITapGestureRecognizer *)tap{
     OONode *node =(OONode*) [tap view];
-    for(OOpalyer*player in _playeyArray){
-        if(player.currentNode == node){
-            player.isChoose = YES;
+    OOpalyer*currentplayer = [OOChessManage shareManage].currentPlayer;
+    //点击玩家
+    if(currentplayer.currentNode == node){
+        currentplayer.isChoose  = !currentplayer.isChoose;
+    }else{
+        //点击棋盘
+        if(node.viewTpye == OONodeViewTypeNeighbor){//棋子走动
+            [currentplayer moveToNode:node];
         }
+//        NSArray* nodes = [[OOChessManage shareManage] getValidnNeighborArray:node];
+//        for(OONode*node in nodes){
+//            node.backgroundColor = [UIColor redColor];
+//        }
     }
 }
 

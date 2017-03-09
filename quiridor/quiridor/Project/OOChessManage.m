@@ -33,6 +33,7 @@
 - (void)setDefaultData{
     _searchedArray = [[NSMutableSet alloc]init];
     _neighborArray = [[NSMutableSet alloc]init];
+    _nextStepNodes = [[NSMutableSet alloc]init];
 }
 
 //reload data
@@ -160,12 +161,88 @@
             continue;
         }
         [neibors addObject:neiborNode];
-        //        _neiboarself.parent = point;
-        //        if(_neiboarself.viewTpye != OONodeViewTypeEnd && _neiboarself.viewTpye != OONodeViewTypeStart){
-        //            _neiboarself.viewTpye = OONodeViewTypeNeighbor;
-        //        }
-        //        [_neighboar addObject:_neiboarpoint];
     }
     return neibors;
+}
+
+- (NSMutableArray*)getValidnNeighborArray:(OONode*)node{
+    NSArray *points = [OOchessboard shareView].wallPointArray;
+    NSMutableArray * neibors = [[NSMutableArray alloc]init];
+    for (int i=0;i<4;i++){
+        //上下左右
+        int _neibornodex;
+        int _neibornodey;
+        if(i == 0){//上
+            if(node.y == MaxY-1){
+                continue;
+            }
+            //判断是否有墙
+            NSArray *wall = @[@(node.x),@(node.y+0.5)];
+            if([points containsObject:wall]){
+                continue;
+            }
+            
+            
+            _neibornodex = node.x;
+            _neibornodey = node.y+1;
+        }
+        else if(i == 1){//下
+            if(node.y == 0){
+                continue;
+            }
+            NSArray *wall = @[@(node.x),@(node.y-0.5)];
+            if([points containsObject:wall]){
+                continue;
+            }
+            
+            _neibornodex = node.x;
+            _neibornodey = node.y-1;
+        }
+        else if(i == 2){//左
+            if(node.x == 0){
+                continue;
+            }
+            NSArray *wall = @[@(node.x-0.5),@(node.y)];
+            if([points containsObject:wall]){
+                continue;
+            }
+            _neibornodex = node.x-1;
+            _neibornodey = node.y;
+        }
+        else if(i == 3){//右
+            NSArray *wall = @[@(node.x+0.5),@(node.y)];
+            if([points containsObject:wall]){
+                continue;
+            }
+            if(node.x == MaxX-1){
+                continue;
+            }
+            _neibornodex = node.x+1;
+            _neibornodey = node.y;
+        }
+        //通过数组获取位置
+        OONode* neiborNode = [OOchessboard shareView].allNodeArray[_neibornodex*MaxY + _neibornodey];
+//        if([_neighborArray containsObject: neiborNode] || [_searchedArray containsObject: neiborNode]){
+//            continue;
+//        }
+        [neibors addObject:neiborNode];
+    }
+    return neibors;
+}
+
+- (void)changeCurrentPlyer{
+    self.currentPlayer.isChoose = NO;
+    for(OONode*node in [OOChessManage shareManage].nextStepNodes){
+        node.viewTpye = OONodeViewTypeNone;
+    }
+    [[OOChessManage shareManage].nextStepNodes removeAllObjects];
+    NSArray*players = [OOchessboard shareView].playeyArray;
+    NSInteger i =  [players indexOfObject: self.currentPlayer];
+    if(i == players.count-1){
+        i = 0;
+    }else{
+        i++;
+    }
+    self.currentPlayer =players[i];
 }
 @end
