@@ -59,6 +59,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib
+    self.view.backgroundColor = [UIColor whiteColor];
     [self setDefaultValue];
     [self UIInit];
 }
@@ -213,13 +214,11 @@
         OOWall *wall = [_chooseWall copy];
         wall.backgroundColor = [UIColor purpleColor];
         [_chessboard addSubview:wall];
+        [[OOChessManage shareManage] changeCurrentPlyer];
         [_chessboard.wallArray addObject:wall];
         if(wall.wallType == OOWallTypehorizontal){
-
             [_chessboard.wallPointArray addObject: @[@(wall.x),@(wall.y+0.5)]];
             [_chessboard.wallPointArray addObject: @[@(wall.x+1),@(wall.y+0.5)]];
-
-
         }
         else{
             [_chessboard.wallPointArray addObject: @[@(wall.x+0.5),@(wall.y)]];
@@ -324,10 +323,6 @@
 - (CGPoint)pointinview:(CGPoint)point{
     CGFloat x = (point.x+1)*(_width+lineWidth)+0.5*lineWidth;
     CGFloat y = kScreenWidth- (point.y+1)*(_width+lineWidth)-0.5*lineWidth;
-    NSLog(@"x:%f,y:%f \n",point.x,point.y);
-
-    NSLog(@"x:%f,y:%f \n",x,y);
-
     return CGPointMake(x, y);
 }
 

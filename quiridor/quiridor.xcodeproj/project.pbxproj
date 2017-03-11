@@ -20,6 +20,7 @@
 		B842C39A1E71561700BD3512 /* OOWall.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C3961E71561700BD3512 /* OOWall.m */; };
 		B842C39D1E71562400BD3512 /* UIView+OOqua.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C39C1E71562400BD3512 /* UIView+OOqua.m */; };
 		B842C3A01E71935800BD3512 /* OOChessManage.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C39F1E71935800BD3512 /* OOChessManage.m */; };
+		B842C3A31E72A6A700BD3512 /* OORootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B842C3A21E72A6A700BD3512 /* OORootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		B842C39C1E71562400BD3512 /* UIView+OOqua.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+OOqua.m"; sourceTree = "<group>"; };
 		B842C39E1E71935800BD3512 /* OOChessManage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OOChessManage.h; sourceTree = "<group>"; };
 		B842C39F1E71935800BD3512 /* OOChessManage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OOChessManage.m; sourceTree = "<group>"; };
+		B842C3A11E72A6A700BD3512 /* OORootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OORootViewController.h; sourceTree = "<group>"; };
+		B842C3A21E72A6A700BD3512 /* OORootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OORootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				B842C3961E71561700BD3512 /* OOWall.m */,
 				B842C39E1E71935800BD3512 /* OOChessManage.h */,
 				B842C39F1E71935800BD3512 /* OOChessManage.m */,
+				B842C3A11E72A6A700BD3512 /* OORootViewController.h */,
+				B842C3A21E72A6A700BD3512 /* OORootViewController.m */,
 			);
 			path = Project;
 			sourceTree = "<group>";
@@ -202,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B842C3A31E72A6A700BD3512 /* OORootViewController.m in Sources */,
 				B842C3991E71561700BD3512 /* OOpalyer.m in Sources */,
 				1CB8B3541DDD464D00120C22 /* ViewController.m in Sources */,
 				B842C38D1E71560F00BD3512 /* NSTimer+OOAddition.m in Sources */,
