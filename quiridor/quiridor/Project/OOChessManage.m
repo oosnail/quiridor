@@ -20,6 +20,7 @@
 @end
 
 @implementation OOChessManage
+
 + (instancetype)shareManage{
     static OOChessManage *manage = nil;
     static dispatch_once_t onceToken;
@@ -165,6 +166,7 @@
     return neibors;
 }
 
+//获取可行走的位置
 - (NSMutableArray*)getValidnNeighborArray:(OONode*)node{
     NSArray *points = [OOchessboard shareView].wallPointArray;
     NSMutableArray * neibors = [[NSMutableArray alloc]init];
@@ -179,12 +181,12 @@
             //判断是否有墙
             NSArray *wall = @[@(node.x),@(node.y+0.5)];
             if([points containsObject:wall]){
+                //如果有墙 判断左右
                 continue;
+            }else{
+                _neibornodex = node.x;
+                _neibornodey = node.y+1;
             }
-            
-            
-            _neibornodex = node.x;
-            _neibornodey = node.y+1;
         }
         else if(i == 1){//下
             if(node.y == 0){
@@ -222,9 +224,6 @@
         }
         //通过数组获取位置
         OONode* neiborNode = [OOchessboard shareView].allNodeArray[_neibornodex*MaxY + _neibornodey];
-//        if([_neighborArray containsObject: neiborNode] || [_searchedArray containsObject: neiborNode]){
-//            continue;
-//        }
         [neibors addObject:neiborNode];
     }
     return neibors;

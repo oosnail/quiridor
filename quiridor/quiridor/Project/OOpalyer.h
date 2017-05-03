@@ -40,7 +40,10 @@
 
 - (void)moveToNode:(OONode*)node;
 
+//该player 可走的范围
+- (NSMutableArray*)getValidnNeighborArray;
 
+- (OOpalyer*)anoherPlayer;
 @end
 
 

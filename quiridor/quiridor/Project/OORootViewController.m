@@ -15,6 +15,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+//    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+//    dispatch_sync(mainQueue,^{
+//        NSLog(@"MainQueue");
+//    });
+    
+    
     // Do any additional setup after loading the view.
     {
         UIButton*button = [[UIButton alloc]init];
@@ -44,31 +51,19 @@
         [self.view addSubview:button];
     }
     
-    UITableView*view;
-    view.rowHeight;
+    
+    
     
 }
 
 - (void)beginGame{
     ViewController *vc =[[ViewController alloc]init];
     [self.navigationController pushViewController:vc animated:YES];
-    [UIView transitionFromView:self.view toView:vc.view duration:1.5 options:UIViewAnimationOptionTransitionFlipFromRight completion:nil];
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

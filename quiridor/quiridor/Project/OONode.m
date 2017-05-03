@@ -10,7 +10,50 @@
 #import "OOchessboard.h"
 #import "UIView+OOqua.h"
 #import "OOChessManage.h"
+@interface OONode()
+@property (nonatomic, weak,readwrite) OONode *upNode;
+@property (nonatomic, weak,readwrite) OONode *rightNode;
+@property (nonatomic, weak,readwrite) OONode *leftNode;
+@property (nonatomic, weak,readwrite) OONode *downNode;
+@end
+
 @implementation OONode
+
+- (OONode*)rightNode{
+    NSArray*arr = [OOchessboard shareView].allNodeArray;
+    if(self.x == MaxX){
+        return nil;
+    }
+    NSInteger index = (self.x+1) *MaxY + self.y;
+    return arr[index];
+}
+
+- (OONode*)leftNode{
+    NSArray*arr = [OOchessboard shareView].allNodeArray;
+    if(self.x == 0){
+        return nil;
+    }
+    NSInteger index = (self.x-1) *MaxY + self.y;
+    return arr[index];
+}
+
+- (OONode*)upNode{
+    NSArray*arr = [OOchessboard shareView].allNodeArray;
+    if(self.y == MaxY){
+        return nil;
+    }
+    NSInteger index = self.x *MaxY + self.y+1;
+    return arr[index];
+}
+
+- (OONode*)downNode{
+    NSArray*arr = [OOchessboard shareView].allNodeArray;
+    if(self.y == 0){
+        return nil;
+    }
+    NSInteger index = self.x *MaxY + self.y-1;
+    return arr[index];
+}
 
 - (id)init{
     self = [super  init];
@@ -121,14 +164,6 @@
         //通过数组获取位置
         OONode* neiborNode = [OOchessboard shareView].allNodeArray[_neibornodex*MaxY + _neibornodey];
         [neibors addObject:neiborNode];
-//        if([_neighboar containsObject: _neiboarpoint] || [player.searchedArray containsObject: _neiboarpoint]){
-//            continue;
-//        }
-//        _neiboarself.parent = point;
-        //        if(_neiboarself.viewTpye != OONodeViewTypeEnd && _neiboarself.viewTpye != OONodeViewTypeStart){
-        //            _neiboarself.viewTpye = OONodeViewTypeNeighbor;
-        //        }
-//        [_neighboar addObject:_neiboarpoint];
     }
     return neibors;
 }

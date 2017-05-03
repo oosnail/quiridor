@@ -25,6 +25,12 @@ typedef NS_ENUM(NSUInteger,OONodeViewState ){
 @property (nonatomic, assign) int x;
 @property (nonatomic, assign) int y;
 @property (nonatomic, weak) OONode *parent;
+//上下左右
+@property (nonatomic, weak,readonly) OONode *upNode;
+@property (nonatomic, weak,readonly) OONode *rightNode;
+@property (nonatomic, weak,readonly) OONode *leftNode;
+@property (nonatomic, weak,readonly) OONode *downNode;
+
 @property (nonatomic, assign) int distance;
 @property (nonatomic, assign) OONodeViewType viewTpye;
 @property (nonatomic, assign) OONodeViewState viewState;

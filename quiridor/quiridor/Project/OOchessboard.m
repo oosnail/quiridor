@@ -44,6 +44,7 @@
     //[self resetDodeStatus];
     
 }
+
 #pragma mark- UI
 - (void)UIInit{
     self.backgroundColor = [UIColor redColor];
@@ -52,6 +53,7 @@
     [self addNode];
     [self addPlayer];
 }
+
 //添加棋盘
 - (void)addNode{
     for(int x =0;x<MaxNum;x++){
